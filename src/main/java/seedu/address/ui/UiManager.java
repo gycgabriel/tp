@@ -22,7 +22,7 @@ public class UiManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String ICON_APPLICATION = "/images/address_book_32.png";
 
-    private Logic logic;
+    private final Logic logic;
     private MainWindow mainWindow;
 
     /**
@@ -33,8 +33,7 @@ public class UiManager implements Ui {
         this.logic = logic;
     }
 
-    @Override
-    public void start(Stage primaryStage) {
+    @Override public void start(Stage primaryStage) {
         logger.info("Starting UI...");
 
         //Set the application icon.
@@ -60,11 +59,11 @@ public class UiManager implements Ui {
     }
 
     /**
-     * Shows an alert dialog on {@code owner} with the given parameters.
-     * This method only returns after the user has closed the alert dialog.
+     * Shows an alert dialog on {@code owner} with the given parameters. This method only returns after the user has
+     * closed the alert dialog.
      */
     private static void showAlertDialogAndWait(Stage owner, AlertType type, String title, String headerText,
-                                               String contentText) {
+        String contentText) {
         final Alert alert = new Alert(type);
         alert.getDialogPane().getStylesheets().add("view/DarkTheme.css");
         alert.initOwner(owner);
@@ -76,8 +75,8 @@ public class UiManager implements Ui {
     }
 
     /**
-     * Shows an error alert dialog with {@code title} and error message, {@code e},
-     * and exits the application after the user has closed the alert dialog.
+     * Shows an error alert dialog with {@code title} and error message, {@code e}, and exits the application after the
+     * user has closed the alert dialog.
      */
     private void showFatalErrorDialogAndShutdown(String title, Throwable e) {
         logger.severe(title + " " + e.getMessage() + StringUtil.getDetails(e));

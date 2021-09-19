@@ -43,70 +43,58 @@ public class ModelManager implements Model {
 
     //=========== UserPrefs ==================================================================================
 
-    @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+    @Override public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
         requireNonNull(userPrefs);
         this.userPrefs.resetData(userPrefs);
     }
 
-    @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
+    @Override public ReadOnlyUserPrefs getUserPrefs() {
         return userPrefs;
     }
 
-    @Override
-    public GuiSettings getGuiSettings() {
+    @Override public GuiSettings getGuiSettings() {
         return userPrefs.getGuiSettings();
     }
 
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
+    @Override public void setGuiSettings(GuiSettings guiSettings) {
         requireNonNull(guiSettings);
         userPrefs.setGuiSettings(guiSettings);
     }
 
-    @Override
-    public Path getAddressBookFilePath() {
+    @Override public Path getAddressBookFilePath() {
         return userPrefs.getAddressBookFilePath();
     }
 
-    @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
+    @Override public void setAddressBookFilePath(Path addressBookFilePath) {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
     //=========== AddressBook ================================================================================
 
-    @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
+    @Override public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
     }
 
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    @Override public ReadOnlyAddressBook getAddressBook() {
         return addressBook;
     }
 
-    @Override
-    public boolean hasPerson(Person person) {
+    @Override public boolean hasPerson(Person person) {
         requireNonNull(person);
         return addressBook.hasPerson(person);
     }
 
-    @Override
-    public void deletePerson(Person target) {
+    @Override public void deletePerson(Person target) {
         addressBook.removePerson(target);
     }
 
-    @Override
-    public void addPerson(Person person) {
+    @Override public void addPerson(Person person) {
         addressBook.addPerson(person);
         updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
     }
 
-    @Override
-    public void setPerson(Person target, Person editedPerson) {
+    @Override public void setPerson(Person target, Person editedPerson) {
         requireAllNonNull(target, editedPerson);
 
         addressBook.setPerson(target, editedPerson);
@@ -115,22 +103,19 @@ public class ModelManager implements Model {
     //=========== Filtered Person List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of
-     * {@code versionedAddressBook}
+     * Returns an unmodifiable view of the list of {@code Person} backed by the internal list of {@code
+     * versionedAddressBook}
      */
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
+    @Override public ObservableList<Person> getFilteredPersonList() {
         return filteredPersons;
     }
 
-    @Override
-    public void updateFilteredPersonList(Predicate<Person> predicate) {
+    @Override public void updateFilteredPersonList(Predicate<Person> predicate) {
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
         // short circuit if same object
         if (obj == this) {
             return true;
@@ -143,9 +128,8 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredPersons.equals(other.filteredPersons);
+        return addressBook.equals(other.addressBook) && userPrefs.equals(other.userPrefs) && filteredPersons.equals(
+            other.filteredPersons);
     }
 
 }

@@ -16,8 +16,7 @@ class JsonAdaptedTag {
     /**
      * Constructs a {@code JsonAdaptedTag} with the given {@code tagName}.
      */
-    @JsonCreator
-    public JsonAdaptedTag(String tagName) {
+    @JsonCreator public JsonAdaptedTag(String tagName) {
         this.tagName = tagName;
     }
 
@@ -28,8 +27,7 @@ class JsonAdaptedTag {
         tagName = source.tagName;
     }
 
-    @JsonValue
-    public String getTagName() {
+    @JsonValue public String getTagName() {
         return tagName;
     }
 

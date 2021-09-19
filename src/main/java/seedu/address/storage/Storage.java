@@ -14,19 +14,14 @@ import seedu.address.model.UserPrefs;
  */
 public interface Storage extends AddressBookStorage, UserPrefsStorage {
 
-    @Override
-    Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
+    @Override Optional<UserPrefs> readUserPrefs() throws DataConversionException, IOException;
 
-    @Override
-    void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
+    @Override void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
-    @Override
-    Path getAddressBookFilePath();
+    @Override Path getAddressBookFilePath();
 
-    @Override
-    Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException;
+    @Override Optional<ReadOnlyAddressBook> readAddressBook() throws DataConversionException, IOException;
 
-    @Override
-    void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
+    @Override void saveAddressBook(ReadOnlyAddressBook addressBook) throws IOException;
 
 }

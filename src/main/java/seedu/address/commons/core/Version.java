@@ -50,30 +50,26 @@ public class Version implements Comparable<Version> {
 
     /**
      * Parses a version number string in the format V1.2.3.
+     *
      * @param versionString version number string
      * @return a Version object
      */
-    @JsonCreator
-    public static Version fromString(String versionString) throws IllegalArgumentException {
+    @JsonCreator public static Version fromString(String versionString) throws IllegalArgumentException {
         Matcher versionMatcher = VERSION_PATTERN.matcher(versionString);
 
         if (!versionMatcher.find()) {
             throw new IllegalArgumentException(String.format(EXCEPTION_STRING_NOT_VERSION, versionString));
         }
 
-        return new Version(Integer.parseInt(versionMatcher.group(1)),
-                Integer.parseInt(versionMatcher.group(2)),
-                Integer.parseInt(versionMatcher.group(3)),
-                versionMatcher.group(4) == null ? false : true);
+        return new Version(Integer.parseInt(versionMatcher.group(1)), Integer.parseInt(versionMatcher.group(2)),
+            Integer.parseInt(versionMatcher.group(3)), versionMatcher.group(4) != null);
     }
 
-    @JsonValue
-    public String toString() {
+    @JsonValue public String toString() {
         return String.format("V%d.%d.%d%s", major, minor, patch, isEarlyAccess ? "ea" : "");
     }
 
-    @Override
-    public int compareTo(Version other) {
+    @Override public int compareTo(Version other) {
         if (major != other.major) {
             return major - other.major;
         }
@@ -92,8 +88,7 @@ public class Version implements Comparable<Version> {
         return 1;
     }
 
-    @Override
-    public boolean equals(Object obj) {
+    @Override public boolean equals(Object obj) {
         if (obj == null) {
             return false;
         }
@@ -105,8 +100,7 @@ public class Version implements Comparable<Version> {
         return compareTo(other) == 0;
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         String hash = String.format("%03d%03d%03d", major, minor, patch);
         if (!isEarlyAccess) {
             hash = "1" + hash;

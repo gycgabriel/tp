@@ -18,8 +18,8 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
- * The Main Window. Provides the basic application layout containing
- * a menu bar and space where other JavaFX elements can be placed.
+ * The Main Window. Provides the basic application layout containing a menu bar and space where other JavaFX elements
+ * can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
 
@@ -27,28 +27,23 @@ public class MainWindow extends UiPart<Stage> {
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
-    private Stage primaryStage;
-    private Logic logic;
+    private final Stage primaryStage;
+    private final Logic logic;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
     private ResultDisplay resultDisplay;
-    private HelpWindow helpWindow;
+    private final HelpWindow helpWindow;
 
-    @FXML
-    private StackPane commandBoxPlaceholder;
+    @FXML private StackPane commandBoxPlaceholder;
 
-    @FXML
-    private MenuItem helpMenuItem;
+    @FXML private MenuItem helpMenuItem;
 
-    @FXML
-    private StackPane personListPanelPlaceholder;
+    @FXML private StackPane personListPanelPlaceholder;
 
-    @FXML
-    private StackPane resultDisplayPlaceholder;
+    @FXML private StackPane resultDisplayPlaceholder;
 
-    @FXML
-    private StackPane statusbarPlaceholder;
+    @FXML private StackPane statusbarPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -78,6 +73,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -138,8 +134,7 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Opens the help window or focuses on it if it's already opened.
      */
-    @FXML
-    public void handleHelp() {
+    @FXML public void handleHelp() {
         if (!helpWindow.isShowing()) {
             helpWindow.show();
         } else {
@@ -154,10 +149,10 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Closes the application.
      */
-    @FXML
-    private void handleExit() {
-        GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+    @FXML private void handleExit() {
+        GuiSettings guiSettings =
+            new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(), (int) primaryStage.getX(),
+                (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();

@@ -32,8 +32,7 @@ public class Config {
         this.userPrefsFilePath = userPrefsFilePath;
     }
 
-    @Override
-    public boolean equals(Object other) {
+    @Override public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
@@ -43,17 +42,14 @@ public class Config {
 
         Config o = (Config) other;
 
-        return Objects.equals(logLevel, o.logLevel)
-                && Objects.equals(userPrefsFilePath, o.userPrefsFilePath);
+        return Objects.equals(logLevel, o.logLevel) && Objects.equals(userPrefsFilePath, o.userPrefsFilePath);
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return Objects.hash(logLevel, userPrefsFilePath);
     }
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Current log level : " + logLevel);
         sb.append("\nPreference file Location : " + userPrefsFilePath);

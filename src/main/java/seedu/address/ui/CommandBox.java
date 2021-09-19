@@ -18,8 +18,7 @@ public class CommandBox extends UiPart<Region> {
 
     private final CommandExecutor commandExecutor;
 
-    @FXML
-    private TextField commandTextField;
+    @FXML private TextField commandTextField;
 
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
@@ -34,8 +33,7 @@ public class CommandBox extends UiPart<Region> {
     /**
      * Handles the Enter button pressed event.
      */
-    @FXML
-    private void handleCommandEntered() {
+    @FXML private void handleCommandEntered() {
         String commandText = commandTextField.getText();
         if (commandText.equals("")) {
             return;
@@ -72,8 +70,7 @@ public class CommandBox extends UiPart<Region> {
     /**
      * Represents a function that can execute commands.
      */
-    @FunctionalInterface
-    public interface CommandExecutor {
+    @FunctionalInterface public interface CommandExecutor {
         /**
          * Executes the command and returns the result.
          *

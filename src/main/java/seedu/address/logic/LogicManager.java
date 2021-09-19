@@ -37,8 +37,7 @@ public class LogicManager implements Logic {
         addressBookParser = new AddressBookParser();
     }
 
-    @Override
-    public CommandResult execute(String commandText) throws CommandException, ParseException {
+    @Override public CommandResult execute(String commandText) throws CommandException, ParseException {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
@@ -54,28 +53,23 @@ public class LogicManager implements Logic {
         return commandResult;
     }
 
-    @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    @Override public ReadOnlyAddressBook getAddressBook() {
         return model.getAddressBook();
     }
 
-    @Override
-    public ObservableList<Person> getFilteredPersonList() {
+    @Override public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
     }
 
-    @Override
-    public Path getAddressBookFilePath() {
+    @Override public Path getAddressBookFilePath() {
         return model.getAddressBookFilePath();
     }
 
-    @Override
-    public GuiSettings getGuiSettings() {
+    @Override public GuiSettings getGuiSettings() {
         return model.getGuiSettings();
     }
 
-    @Override
-    public void setGuiSettings(GuiSettings guiSettings) {
+    @Override public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
     }
 }
