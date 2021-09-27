@@ -185,66 +185,60 @@ Shows a list of all appointments.
 
 Format: `list -a`
 
-Examples:
-`list -a`
+Example:  
+* `list -a`  Lists all appointments.
 
-Example Usage:
-`list -a`
-
-Expected Outcome:
-1. Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
-2. Patient Name: Yong, Ian Appointment Date: 2021-10-06
+Expected Outcome:  
+1. Patient Name: Lim, Joshen  Appointment Date: 2021-10-05  
+2. Patient Name: Yong, Ian Appointment Date: 2021-10-06  
 
 
-## Adding an appointment: add
-Adds a person to the appointment
+## Adding an appointment: `add`
+Adds an appointment for the patient of the specified patient id.  
 
-Format: `add -a n/PATIENT_ID d/DATE`
+Format: `add -a n/PATIENT_ID d/DATE`  
 
-Example Usage:
-`add -a n/0001 d/2021-10-05`
+Examples:  
+* `list`  List all patients.
+* `add -a n/1 d/2021-10-05`  Adds appointment to patient of ID 1.
 
-Expected Outcome:
-New appointment added: 
-Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+Expected Outcome:  
+New appointment added:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05  
 
 
-## Deleting an appointment: delete
-Deletes the specified appointment.
+## Deleting an appointment: `delete`
+Deletes the appointment at the specified index.
 
-Format: `delete -a INDEX`
-Deletes the appointment at the specified INDEX.
-The index refers to the index number shown in the displayed appointment list.
-The index must be a positive integer 1, 2, 3, …​
+Format: `delete -a INDEX`  
+* Deletes the appointment at the specified INDEX.  
+* The index refers to the index number shown in the displayed appointment list.  
+* The index must be a positive integer 1, 2, 3, …​  
 
 Examples:
-list followed by delete 2 deletes the 2nd appointment.
+* `list -a`  Lists all appointments.  
+* `delete -a 1`  Deletes appointment at index 1. 
 
-Example Usage:
-`delete -a n/Joshen Lim d/2021-10-05`
-
-Expected Outcome:
-Appointment deleted: 
-Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+Expected Outcome:  
+Appointment deleted:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05  
 
 
-## Archiving an appointment:  archive
+## Archiving an appointment:  `archive`
 Archives an old appointment that is already past its date.
 
 Format: `archive -a INDEX`
-Archives the appointment at the specified INDEX.
-The index refers to the index number shown in the displayed appointment list.
-The index must be a positive integer 1, 2, 3, …​
+* Archives the appointment at the specified INDEX.
+* The index refers to the index number shown in the displayed appointment list.
+* The index must be a positive integer 1, 2, 3, …​
 
 Examples:
-list followed by archive 2 archives the 2nd appointment.
+* `list -a`  Lists all appointments.
+* `archive -a 1`  Archives appointment at index 1.
 
-Example Usage:
-`archive -a n/Joshen Lim d/2021-10-05`
-
-Expected Outcome:
-Old appointment archived: 
-Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+Expected Outcome:  
+Old appointment archived:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05  
 
 
 --------------------------------------------------------------------------------------------------------------------
@@ -267,3 +261,8 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+**List Appointment** | `list -a`
+**Add Appointment** | `add -a n/PATIENT_ID d/DATE` <br> e.g.,  `add -a n/1 d/2021-10-05`
+**Delete Appointment** | `delete -a INDEX` <br> e.g., `delete -a 1`
+**Archive Appointment** | `archive -a INDEX` <br> e.g., `archive -a 1`
+
