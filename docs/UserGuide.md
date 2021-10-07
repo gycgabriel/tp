@@ -16,9 +16,9 @@ reduce man-hours in managing paper files, translating this ‘saved’ time into
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-2. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `docit.jar` from [here](https://github.com/AY2122S1-CS2103-W14-1/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your Doc'it.
 
 4. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
@@ -26,19 +26,40 @@ reduce man-hours in managing paper files, translating this ‘saved’ time into
 5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-* **`list`** : Lists all contacts.
-
-* **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
-
-* **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-* **`clear`** : Deletes all contacts.
+* **`list -p`** : Lists all patients.
 
 * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+
+## Overview of Features
+
+<div markdown="block" class="alert alert-info">
+
+This section provides a brief overview of Doc’It. The intention is for users to gain a better
+understanding of basic functionalities of Doc’It, before diving into specific commands.
+</div>
+
+1. Managing Patient Records
+
+   a. Create a new patient record
+
+   b. View details of patient records
+
+   c. Delete patient records
+
+
+2. Managing Patient Appointments
+
+   a. Create a new appointment
+
+   b. View appointments
+
+   c. Delete appointments
+
+   d. Archive appointments
 
 ## Features
 
@@ -69,8 +90,6 @@ reduce man-hours in managing paper files, translating this ‘saved’ time into
 ### Viewing help : `help`
 
 Shows a message explaning how to access the help page.
-
-![help message](images/helpMessage.png)
 
 Format: `help`
 
@@ -175,12 +194,81 @@ _Details coming soon ..._
 
 _Details coming soon ..._
 
+
+## Appointments
+A patient in our patient record may have appointments to visit the family clinic. In the appointment view, each appointment on the appointment list indicates an upcoming visit to the clinic. To help small family clinics manage their upcoming appointments for its patients, Doc’It records the following attributes for appointment:
+
+* Patient’s Name: The patient’s name matching in the patient record.
+* Appointment Date: The date of the appointment
+
+
+## Listing all appointments: `list`
+Shows a list of all appointments.
+
+Format: `list -a`
+
+Example:
+* `list -a`  Lists all appointments.
+
+Expected Outcome:
+1. Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+2. Patient Name: Yong, Ian Appointment Date: 2021-10-06
+
+
+## Adding an appointment: `add`
+Adds an appointment for the patient of the specified patient id.
+
+Format: `add -a n/PATIENT_ID d/DATE`
+
+Examples:
+* `list`  List all patients.
+* `add -a n/1 d/2021-10-05`  Adds appointment to patient of ID 1.
+
+Expected Outcome:  
+New appointment added:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+
+
+## Deleting an appointment: `delete`
+Deletes the appointment at the specified index.
+
+Format: `delete -a INDEX`
+* Deletes the appointment at the specified INDEX.
+* The index refers to the index number shown in the displayed appointment list.
+* The index must be a positive integer 1, 2, 3, …​
+
+Examples:
+* `list -a`  Lists all appointments.
+* `delete -a 1`  Deletes appointment at index 1.
+
+Expected Outcome:  
+Appointment deleted:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+
+
+## Archiving an appointment:  `archive`
+Archives an old appointment that is already past its date.
+
+Format: `archive -a INDEX`
+* Archives the appointment at the specified INDEX.
+* The index refers to the index number shown in the displayed appointment list.
+* The index must be a positive integer 1, 2, 3, …​
+
+Examples:
+* `list -a`  Lists all appointments.
+* `archive -a 1`  Archives appointment at index 1.
+
+Expected Outcome:  
+Old appointment archived:  
+Patient Name: Lim, Joshen  Appointment Date: 2021-10-05
+
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Doc'it home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -195,3 +283,18 @@ Action | Format, Examples
 **Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
 **List** | `list`
 **Help** | `help`
+**List Appointment** | `list -a`
+**Add Appointment** | `add -a n/PATIENT_ID d/DATE` <br> e.g.,  `add -a n/1 d/2021-10-05`
+**Delete Appointment** | `delete -a INDEX` <br> e.g., `delete -a 1`
+**Archive Appointment** | `archive -a INDEX` <br> e.g., `archive -a 1`
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Glossary
+
+Term | Definition
+----- | ----------
+**Appointment** | A scheduled consult between a patient and the clinic's doctor.
+**Archive** | Storage for data that is non-urgent, e.g. appointment records that are past their date.
+**Patient Record** | A record of a patient's details, medical history, medication, appointment list, and name.
+**Prescription** | The issued medication/treatment for a patient.
