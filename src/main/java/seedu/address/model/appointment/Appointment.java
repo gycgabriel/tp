@@ -15,16 +15,14 @@ public class Appointment {
     private final String datetime;
 
     // Data fields
-    private final String prescription;
 
     /**
      * Every field must be present and not null.
      */
-    public Appointment(int patientId, String datetime, String prescription) {
+    public Appointment(int patientId, String datetime) {
         requireAllNonNull(patientId, datetime);
         this.patientId = patientId;
         this.datetime = datetime;
-        this.prescription = prescription;
     }
 
     public int getPatientId() {
@@ -33,10 +31,6 @@ public class Appointment {
 
     public String getDatetime() {
         return datetime;
-    }
-
-    public String getPrescription() {
-        return prescription;
     }
 
     /**
@@ -69,14 +63,13 @@ public class Appointment {
 
         Appointment otherAppointment = (Appointment) other;
         return otherAppointment.getPatientId() == (getPatientId())
-                && otherAppointment.getDatetime().equals(getDatetime())
-                && otherAppointment.getPrescription().equals(getPrescription());
+                && otherAppointment.getDatetime().equals(getDatetime());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(patientId, datetime, prescription);
+        return Objects.hash(patientId, datetime);
     }
 
     @Override
@@ -84,9 +77,7 @@ public class Appointment {
         final StringBuilder builder = new StringBuilder();
         builder.append(getPatientId())
                 .append("; Datetime: ")
-                .append(getDatetime())
-                .append("; Prescription: ")
-                .append(getPrescription());
+                .append(getDatetime());
         return builder.toString();
     }
 
