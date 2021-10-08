@@ -13,7 +13,8 @@ import seedu.address.model.appointment.exceptions.AppointmentNotFoundException;
 
 /**
  * A list of appointments that enforces uniqueness between its elements and does not allow nulls.
- * A appointment is considered unique by comparing using {@code Appointment#isSameAppointment(Appointment)}. As such, adding and updating of
+ * An appointment is considered unique by comparing using {@code Appointment#isSameAppointment(Appointment)}. As
+ * such, adding and updating of
  * appointments uses Appointment#isSameAppointment(Appointment) for equality so as to ensure that the appointment being added or updated is
  * unique in terms of identity in the UniqueAppointmentList. However, the removal of a appointment uses Appointment#equals(Object) so
  * as to ensure that the appointment with exactly the same fields will be removed.
@@ -37,7 +38,7 @@ public class UniqueAppointmentList implements Iterable<Appointment> {
     }
 
     /**
-     * Adds a appointment to the list.
+     * Adds an appointment to the list.
      * The appointment must not already exist in the list.
      */
     public void add(Appointment toAdd) {

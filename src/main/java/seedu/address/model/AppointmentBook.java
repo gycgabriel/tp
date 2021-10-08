@@ -59,7 +59,7 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     //// appointment-level operations
 
     /**
-     * Returns true if a appointment with the same identity as {@code appointment} exists in the address book.
+     * Returns true if an appointment with the same identity as {@code appointment} exists in the address book.
      */
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
@@ -67,7 +67,7 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     }
 
     /**
-     * Adds a appointment to the address book.
+     * Adds an appointment to the address book.
      * The appointment must not already exist in the address book.
      */
     public void addAppointment(Appointment p) {
