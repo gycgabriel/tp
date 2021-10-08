@@ -183,6 +183,15 @@ public class ModelManager implements Model {
         appointmentBook.setAppointment(target, editedAppointment);
     }
 
+    // TODO: Remove and replace with appointment view in UI
+
+    /**
+     * Temporarily returns appointment list to be printed in CommandResult.
+     */
+    public String getAppointments() {
+        return appointmentBook.toString();
+    }
+
     //=========== Filtered Appointment List Accessors =============================================================
 
     /**

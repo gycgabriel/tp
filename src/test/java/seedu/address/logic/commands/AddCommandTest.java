@@ -190,6 +190,15 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        // TODO: Remove and replace with appointment view in UI
+
+        /**
+         * Temporarily returns appointment list to be printed in CommandResult.
+         */
+        public String getAppointments() {
+            throw new AssertionError("This method should not be called.");
+        }
+
         @Override
         public ObservableList<Appointment> getFilteredAppointmentList() {
             throw new AssertionError("This method should not be called.");

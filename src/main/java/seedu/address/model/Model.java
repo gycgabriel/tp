@@ -135,6 +135,13 @@ public interface Model {
      */
     void setAppointment(Appointment target, Appointment editedAppointment);
 
+    // TODO: Remove and replace with appointment view in UI
+
+    /**
+     * Temporarily returns appointment list to be printed in CommandResult.
+     */
+    String getAppointments();
+
     /**
      * Returns an unmodifiable view of the filtered appointment list
      */

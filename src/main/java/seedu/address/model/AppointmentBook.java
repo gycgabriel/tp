@@ -2,6 +2,7 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -94,7 +95,12 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     //// util methods
 
     @Override public String toString() {
-        return appointments.asUnmodifiableObservableList().size() + " appointments";
+        Iterator<Appointment> i = appointments.iterator();
+        StringBuilder r = new StringBuilder();
+        while (i.hasNext()) {
+            r.append(i.next());
+        }
+        return appointments.asUnmodifiableObservableList().size() + " appointments:\n" + r.toString();
         // TODO: refine later
     }
 
