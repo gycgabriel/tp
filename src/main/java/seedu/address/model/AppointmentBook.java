@@ -9,8 +9,7 @@ import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.UniqueAppointmentList;
 
 /**
- * Wraps all data at the address-book level
- * Duplicates are not allowed (by .isSameAppointment comparison)
+ * Wraps all data at the address-book level Duplicates are not allowed (by .isSameAppointment comparison)
  */
 public class AppointmentBook implements ReadOnlyAppointmentBook {
 
@@ -27,7 +26,8 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
         appointments = new UniqueAppointmentList();
     }
 
-    public AppointmentBook() {}
+    public AppointmentBook() {
+    }
 
     /**
      * Creates an AppointmentBook using the Appointments in the {@code toBeCopied}
@@ -40,8 +40,8 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the appointment list with {@code appointments}.
-     * {@code appointments} must not contain duplicate appointments.
+     * Replaces the contents of the appointment list with {@code appointments}. {@code appointments} must not contain
+     * duplicate appointments.
      */
     public void setAppointments(List<Appointment> appointments) {
         this.appointments.setAppointments(appointments);
@@ -67,17 +67,16 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     }
 
     /**
-     * Adds an appointment to the address book.
-     * The appointment must not already exist in the address book.
+     * Adds an appointment to the address book. The appointment must not already exist in the address book.
      */
     public void addAppointment(Appointment p) {
         appointments.add(p);
     }
 
     /**
-     * Replaces the given appointment {@code target} in the list with {@code editedAppointment}.
-     * {@code target} must exist in the address book.
-     * The appointment identity of {@code editedAppointment} must not be the same as another existing appointment in the address book.
+     * Replaces the given appointment {@code target} in the list with {@code editedAppointment}. {@code target} must
+     * exist in the address book. The appointment identity of {@code editedAppointment} must not be the same as another
+     * existing appointment in the address book.
      */
     public void setAppointment(Appointment target, Appointment editedAppointment) {
         requireNonNull(editedAppointment);
@@ -86,8 +85,7 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AppointmentBook}.
-     * {@code key} must exist in the address book.
+     * Removes {@code key} from this {@code AppointmentBook}. {@code key} must exist in the address book.
      */
     public void removeAppointment(Appointment key) {
         appointments.remove(key);
@@ -95,26 +93,22 @@ public class AppointmentBook implements ReadOnlyAppointmentBook {
 
     //// util methods
 
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return appointments.asUnmodifiableObservableList().size() + " appointments";
         // TODO: refine later
     }
 
-    @Override
-    public ObservableList<Appointment> getAppointmentList() {
+    @Override public ObservableList<Appointment> getAppointmentList() {
         return appointments.asUnmodifiableObservableList();
     }
 
-    @Override
-    public boolean equals(Object other) {
+    @Override public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AppointmentBook // instanceof handles nulls
-                && appointments.equals(((AppointmentBook) other).appointments));
+            || (other instanceof AppointmentBook // instanceof handles nulls
+            && appointments.equals(((AppointmentBook) other).appointments));
     }
 
-    @Override
-    public int hashCode() {
+    @Override public int hashCode() {
         return appointments.hashCode();
     }
 }

@@ -93,8 +93,7 @@ public class ModelManager implements Model {
         requireNonNull(appointmentBookFilePath);
         userPrefs.setAppointmentBookFilePath(appointmentBookFilePath);
     }
-    
-    
+
     //=========== AddressBook ================================================================================
 
     @Override

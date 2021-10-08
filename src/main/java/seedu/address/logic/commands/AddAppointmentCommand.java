@@ -15,16 +15,14 @@ public class AddAppointmentCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the appointment book. "
-            + "Parameters: "
-            + PREFIX_NAME + "ID "
-            + PREFIX_DATETIME + "DATETIME \n"
-            + "Example: appt" + COMMAND_WORD + " "
-            + PREFIX_NAME + "1"
+    public static final String MESSAGE_USAGE =
+        COMMAND_WORD + ": Adds an appointment to the appointment book. " + "Parameters: " + PREFIX_NAME + "ID "
+            + PREFIX_DATETIME + "DATETIME \n" + "Example: appt" + COMMAND_WORD + " " + PREFIX_NAME + "1"
             + PREFIX_DATETIME + "2021-12-31 1600";
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the appointment book";
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT =
+        "This appointment already exists in the appointment book";
 
     private final Appointment toAdd;
 
@@ -36,8 +34,7 @@ public class AddAppointmentCommand extends Command {
         toAdd = appointment;
     }
 
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
+    @Override public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
         if (model.hasAppointment(toAdd)) {
@@ -48,10 +45,9 @@ public class AddAppointmentCommand extends Command {
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
-    @Override
-    public boolean equals(Object other) {
+    @Override public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddAppointmentCommand // instanceof handles nulls
-                && toAdd.equals(((AddAppointmentCommand) other).toAdd));
+            || (other instanceof AddAppointmentCommand // instanceof handles nulls
+            && toAdd.equals(((AddAppointmentCommand) other).toAdd));
     }
 }

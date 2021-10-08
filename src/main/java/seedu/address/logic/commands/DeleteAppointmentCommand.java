@@ -18,9 +18,8 @@ public class DeleteAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the appointment identified by the index number used in the displayed appointment list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Deletes the appointment identified by the index number used in the displayed appointment list.\n"
+        + "Parameters: INDEX (must be a positive integer)\n" + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
 
@@ -30,8 +29,7 @@ public class DeleteAppointmentCommand extends Command {
         this.targetIndex = targetIndex;
     }
 
-    @Override
-    public CommandResult execute(Model model) throws CommandException {
+    @Override public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         List<Appointment> lastShownList = model.getFilteredAppointmentList();
 
@@ -44,10 +42,9 @@ public class DeleteAppointmentCommand extends Command {
         return new CommandResult(String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS, appointmentToDelete));
     }
 
-    @Override
-    public boolean equals(Object other) {
+    @Override public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteAppointmentCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteAppointmentCommand) other).targetIndex)); // state check
+            || (other instanceof DeleteAppointmentCommand // instanceof handles nulls
+            && targetIndex.equals(((DeleteAppointmentCommand) other).targetIndex)); // state check
     }
 }
