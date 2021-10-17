@@ -31,7 +31,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Edits the details of an existing person in the address book.
  */
-public class EditCommand extends Command {
+public class EditPatientCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
@@ -60,7 +60,7 @@ public class EditCommand extends Command {
      * @param index of the person in the filtered person list to edit
      * @param editPersonDescriptor details to edit the person with
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+    public EditPatientCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
         requireNonNull(index);
         requireNonNull(editPersonDescriptor);
 
@@ -71,7 +71,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Patient> lastShownList = model.getFilteredPersonList();
+        List<Patient> lastShownList = model.getFilteredPatientList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -80,12 +80,12 @@ public class EditCommand extends Command {
         Patient patientToEdit = lastShownList.get(index.getZeroBased());
         Patient editedPatient = createEditedPerson(patientToEdit, editPersonDescriptor);
 
-        if (!patientToEdit.isSamePerson(editedPatient) && model.hasPerson(editedPatient)) {
+        if (!patientToEdit.isSamePatient(editedPatient) && model.hasPatient(editedPatient)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(patientToEdit, editedPatient);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.setPatient(patientToEdit, editedPatient);
+        model.updateFilteredPatientList(PREDICATE_SHOW_ALL_PERSONS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPatient));
     }
 
@@ -115,12 +115,12 @@ public class EditCommand extends Command {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EditCommand)) {
+        if (!(other instanceof EditPatientCommand)) {
             return false;
         }
 
         // state check
-        EditCommand e = (EditCommand) other;
+        EditPatientCommand e = (EditPatientCommand) other;
         return index.equals(e.index)
                 && editPersonDescriptor.equals(e.editPersonDescriptor);
     }
